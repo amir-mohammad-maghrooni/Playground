@@ -10,9 +10,11 @@ import javafx.stage.Stage;
 
 public class HubController {
     @FXML
+    @SuppressWarnings("unused")
     private Button startButton;
 
     @FXML
+    @SuppressWarnings("unused")
     private void goToModulePage(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/hub/ModuleGrid.fxml"));
@@ -25,6 +27,7 @@ public class HubController {
     }
 
     @FXML
+    @SuppressWarnings("unused")
     private void goToSettings(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/hub/Settings.fxml"));
@@ -38,6 +41,7 @@ public class HubController {
 
 
     @FXML
+    @SuppressWarnings("unused")
     private void exitApp(ActionEvent event) {
         System.exit(0);
     }
