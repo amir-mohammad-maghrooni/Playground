@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="Hub.SettingsController" spacing="15" alignment="CENTER" style="-fx-padding: 20;">
+    <Label text="Settings" style="-fx-font-size: 22px;" />
+    <HBox spacing="10">
+        <Label text="Window Size:" />
+        <ComboBox fx:id="resolutionBox"/>
+    </HBox>
+    <HBox spacing="10">
+        <Label text="Music Volume:" />
+        <Slider fx:id="volumeSlider" min="0" max="1" value="0.5" />
+    </HBox>
+    <Button fx:id="PauseButton" text="Pause Music" onAction="#pauseMusic" />
+    <Button fx:id="resumeButton" text="Resume Music" onAction="#resumeMusic" />
+    
+    <Button text="Main Menu" onAction="#goToMainMenu" />
+</VBox>
+<!-- This is the settings page for the Playground Hub application. It allows users to adjust the window size and music volume. -->

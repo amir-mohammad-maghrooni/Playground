@@ -1,0 +1,9 @@
+hub\HubController.class
+hub\SettingsController.class
+modules\TestModule.class
+hub\MusicPlayer.class
+utils\ProjectModule.class
+Main.class
+hub\ModulePageController.class
+modules\TestModule2.class
+hub\HubApp.class

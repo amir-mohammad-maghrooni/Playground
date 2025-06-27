@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>  <!-- 🔥 REQUIRED -->
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="Hub.ModulePageController">
+    <center>
+        <VBox spacing="10" alignment="CENTER">
+            <GridPane fx:id="moduleGrid" hgap="20" vgap="20">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+            </GridPane>
+            <Label fx:id="pageLabel" text="Page 1" style="-fx-font-size: 14px;" />
+        </VBox>
+    </center>
+    <bottom>
+        <HBox spacing="10" alignment="CENTER">
+            <Button text="⟨ Previous" onAction="#goBack"/>
+            <Button text="Main Menu" onAction="#goToMainMenu"/>
+            <Button text="Next ⟩" onAction="#goNext"/>
+        </HBox>
+    </bottom>
+</BorderPane>
+
+<!-- This is the module grid page for the Playground Hub application. It displays a grid of modules with navigation buttons at the bottom. -->
