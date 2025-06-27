@@ -57,25 +57,28 @@ public class ModulePageController {
     }
 
     @FXML
+    @SuppressWarnings("unused")
     private void goNext() {
         currentPage++;
         loadModules();
     }
 
     @FXML
+    @SuppressWarnings("unused")
     private void goBack() {
         if (currentPage > 0) currentPage--;
         loadModules();
     }
     @FXML
-private void goToMainMenu() {
-    try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/hub/MainMenu.fxml"));
-        Scene scene = new Scene(loader.load());
-        HubApp.getPrimaryStage().setScene(scene);
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-}
+    @SuppressWarnings("unused")
+    private void goToMainMenu() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/hub/MainMenu.fxml"));
+            Scene scene = new Scene(loader.load());
+            HubApp.getPrimaryStage().setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }   
 
 }

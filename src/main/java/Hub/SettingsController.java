@@ -67,6 +67,7 @@ public class SettingsController {
     }   
 
     @FXML
+    @SuppressWarnings("unused")
     private void goToMainMenu() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/hub/MainMenu.fxml"));
@@ -78,11 +79,13 @@ public class SettingsController {
     }
 
     @FXML
+    @SuppressWarnings("unused")
     private void pauseMusic() {
         MusicPlayer.pauseMusic();
     }
 
     @FXML
+    @SuppressWarnings("unused")
     private void resumeMusic() {
         MusicPlayer.resumeMusic();
     }
