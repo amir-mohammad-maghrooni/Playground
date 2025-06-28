@@ -4,7 +4,7 @@ import java.util.prefs.Preferences;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Slider;
 import javafx.stage.Stage;
@@ -16,45 +16,42 @@ public class SettingsController {
     @FXML
     private Slider volumeSlider;
 
-    private final Preferences perfs = Preferences.userNodeForPackage(SettingsController.class);
-
-
+    private final Preferences prefs = Preferences.userNodeForPackage(SettingsController.class);
 
     @FXML
     public void initialize() {
         resolutionBox.getItems().addAll("800x600", "1024x768", "1280x720", "1920x1080", "Fullscreen");
         
         // Restore previous resolution setting if exists
-        String savedRes = perfs.get("resolution", null);
+        String savedRes = prefs.get("resolution", "800x600"); // Default to 800x600 if not set
         if (savedRes != null) {
-            resolutionBox.setValue(savedRes);  // Set AFTER adding listener
+            resolutionBox.setValue(savedRes);
         }
     
         resolutionBox.setOnAction(e -> {
             String selected = resolutionBox.getValue();
             if (selected != null && !selected.isEmpty()) {
-                applyResolution();
+                prefs.put("resolution", selected);
+                applyResolution(selected);
             }
         });
-    
-        volumeSlider.setValue(perfs.getDouble("volume", 0.5));
+        
+        double savedVol = prefs.getDouble("volume", 0.5);
+        if (savedVol >= 0 && savedVol <= 1) {
+            volumeSlider.setValue(savedVol);
+        } else {
+            volumeSlider.setValue(0.5); // Default value if saved value is out of range
+        }
+        
         volumeSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
-            perfs.putDouble("volume", newVal.doubleValue());
+            prefs.putDouble("volume", newVal.doubleValue());
             MusicPlayer.setVolume(newVal.doubleValue());
         });
     }
 
-
-
-    private void applyResolution() {
+    private void applyResolution(String selected) {
         Stage stage = HubApp.getPrimaryStage();
-        if (stage == null) {
-            System.err.println("Primary stage is not set yet!");
-            return;
-        }
-
-        String selected = resolutionBox.getValue();
-        perfs.put("resolution", selected);
+        if (stage == null) return; // Ensure stage is not null
 
         if ("Fullscreen".equals(selected)){
             stage.setFullScreen(true);
@@ -71,8 +68,9 @@ public class SettingsController {
     private void goToMainMenu() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/hub/MainMenu.fxml"));
-            Scene scene = new Scene(loader.load());
-            HubApp.getPrimaryStage().setScene(scene);
+            Parent root = loader.load();
+            Stage stage = HubApp.getPrimaryStage();
+            stage.getScene().setRoot(root);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -5,9 +5,10 @@ import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import modules.TestModule;
 import modules.TestModule2;
 import utils.ProjectModule;
@@ -74,8 +75,9 @@ public class ModulePageController {
     private void goToMainMenu() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/hub/MainMenu.fxml"));
-            Scene scene = new Scene(loader.load());
-            HubApp.getPrimaryStage().setScene(scene);
+            Parent root = loader.load();
+            Stage stage = HubApp.getPrimaryStage();
+            stage.getScene().setRoot(root);
         } catch (Exception e) {
             e.printStackTrace();
         }

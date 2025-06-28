@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -20,7 +19,7 @@ public class HubController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/hub/ModuleGrid.fxml"));
             Parent root = loader.load();
             Stage stage = HubApp.getPrimaryStage();
-            stage.setScene(new Scene(root));
+            stage.getScene().setRoot(root);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -33,7 +32,7 @@ public class HubController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/hub/Settings.fxml"));
             Parent root = loader.load();
             Stage stage = HubApp.getPrimaryStage();
-            stage.setScene(new Scene(root));
+            stage.getScene().setRoot(root);
         } catch (Exception e) {
             e.printStackTrace();
         }
