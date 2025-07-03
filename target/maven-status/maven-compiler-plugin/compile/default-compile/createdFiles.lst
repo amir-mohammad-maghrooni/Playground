@@ -1,9 +1,11 @@
 hub\HubController.class
+hub\ProjectManager.class
 hub\SettingsController.class
 modules\TestModule.class
 hub\MusicPlayer.class
 utils\ProjectModule.class
 Main.class
+hub\ExternalProjectModule.class
 hub\ModulePageController.class
 modules\TestModule2.class
 hub\HubApp.class

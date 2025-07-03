@@ -20,21 +20,21 @@ public class SettingsController {
 
     @FXML
     public void initialize() {
-        resolutionBox.getItems().addAll("800x600", "1024x768", "1280x720", "1920x1080", "Fullscreen");
+        //resolutionBox.getItems().addAll("800x600", "1024x768", "1280x720", "1920x1080", "Fullscreen");
         
         // Restore previous resolution setting if exists
-        String savedRes = prefs.get("resolution", "800x600"); // Default to 800x600 if not set
-        if (savedRes != null) {
-            resolutionBox.setValue(savedRes);
-        }
+        // String savedRes = prefs.get("resolution", "800x600"); // Default to 800x600 if not set
+        // if (savedRes != null) {
+        //     resolutionBox.setValue(savedRes);
+        // }
     
-        resolutionBox.setOnAction(e -> {
-            String selected = resolutionBox.getValue();
-            if (selected != null && !selected.isEmpty()) {
-                prefs.put("resolution", selected);
-                applyResolution(selected);
-            }
-        });
+        // resolutionBox.setOnAction(e -> {
+        //     String selected = resolutionBox.getValue();
+        //     if (selected != null && !selected.isEmpty()) {
+        //         prefs.put("resolution", selected);
+        //         applyResolution(selected);
+        //     }
+        // });
         
         double savedVol = prefs.getDouble("volume", 0.5);
         if (savedVol >= 0 && savedVol <= 1) {
@@ -49,19 +49,19 @@ public class SettingsController {
         });
     }
 
-    private void applyResolution(String selected) {
-        Stage stage = HubApp.getPrimaryStage();
-        if (stage == null) return; // Ensure stage is not null
+    // private void applyResolution(String selected) {
+    //     Stage stage = HubApp.getPrimaryStage();
+    //     if (stage == null) return; // Ensure stage is not null
 
-        if ("Fullscreen".equals(selected)){
-            stage.setFullScreen(true);
-        } else {
-            stage.setFullScreen(false);
-            String[] parts = selected.split("x");
-            stage.setWidth(Integer.parseInt(parts[0]));
-            stage.setHeight(Integer.parseInt(parts[1]));
-        }
-    }   
+    //     if ("Fullscreen".equals(selected)){
+    //         stage.setFullScreen(true);
+    //     } else {
+    //         stage.setFullScreen(false);
+    //         String[] parts = selected.split("x");
+    //         stage.setWidth(Integer.parseInt(parts[0]));
+    //         stage.setHeight(Integer.parseInt(parts[1]));
+    //     }
+    // }   
 
     @FXML
     @SuppressWarnings("unused")
