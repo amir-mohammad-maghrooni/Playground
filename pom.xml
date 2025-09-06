@@ -1,22 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.playground</groupId>
+  <groupId>com.oop01</groupId>
   <artifactId>Playground</artifactId>
-  <version>1.0-SNAPSHOT</version>
-
+  <version>1.0.0</version>
+  <name>Playground</name>
+  <description>JavaFX hub for launching external mini-programs (.jar, .java, .exe, .html, .bat)</description>
   <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>24</java.version>
-    <javafx.version>24</javafx.version>
+    <javafx.version>24.0.2</javafx.version>
+    <gson.version>2.11.0</gson.version>
+    <mainClass>Main</mainClass>
   </properties>
 
   <dependencies>
-    <!-- JavaFX Core Modules -->
+    <!-- JavaFX modules -->
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
@@ -29,47 +31,70 @@
     </dependency>
     <dependency>
       <groupId>org.openjfx</groupId>
-      <artifactId>javafx-media</artifactId>
+      <artifactId>javafx-web</artifactId>
       <version>${javafx.version}</version>
+    </dependency>
+    <!-- Gson for JSON persistence -->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>${gson.version}</version>
     </dependency>
   </dependencies>
 
   <build>
-    <!-- Tell Maven that your resources are in src/main/res -->
-    <resources>
-      <resource>
-        <directory>src/main/res</directory>
-        <includes>
-          <include>**/*.fxml</include>
-          <include>**/*.css</include>
-          <include>**/*.png</include>
-          <include>**/*.jpg</include>
-          <include>**/*.mp3</include>
-        </includes>
-      </resource>
-    </resources>
-
     <plugins>
-      <!-- JavaFX Plugin for launching -->
+      <!-- Use os-maven-plugin to set os.detected.name for JavaFX classifier -->
+      <plugin>
+        <groupId>kr.motd.maven</groupId>
+        <artifactId>os-maven-plugin</artifactId>
+        <version>1.7.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>detect</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Shade into a fat JAR with proper Main-Class -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.6.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>${mainClass}</mainClass>
+                </transformer>
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- JavaFX Maven Plugin for javafx:run -->
       <plugin>
         <groupId>org.openjfx</groupId>
         <artifactId>javafx-maven-plugin</artifactId>
         <version>0.0.8</version>
         <configuration>
-          <mainClass>Main</mainClass> <!-- points to src/main/java/Main.java -->
+          <mainClass>${mainClass}</mainClass>
+          <options>
+            <option>--module-path</option>
+            <option>"C:\Program Files\Java\javafx-sdk-24.0.2\lib"</option>
+            <option>--add-modules</option>
+            <option>javafx.controls,javafx.fxml</option>
+          </options>
         </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
-
 </project>
-
-<!-- This is a basic Maven POM file for a JavaFX project.
-     It includes dependencies for JavaFX controls and FXML, and configures the JavaFX Maven plugin. -->
