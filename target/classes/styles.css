@@ -1,21 +1,63 @@
-.root { -fx-font-family: "Inter", "Segoe UI", sans-serif; }
-.title { -fx-font-size: 48px; -fx-font-weight: bold; }
-.subtitle { -fx-font-size: 16px; -fx-text-fill: #666; }
+.root {
+    -fx-font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.title {
+    -fx-font-size: 48px;
+    -fx-font-weight: bold;
+}
+
+.subtitle {
+    -fx-font-size: 16px;
+    -fx-text-fill: #666;
+}
 
 
-.button { -fx-background-color: #4f8cff; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 12; -fx-padding: 10 16; }
-.button.hovered { -fx-background-color: #3a73e0; }
+.button {
+    -fx-background-color: #4f8cff;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 12;
+    -fx-padding: 10 16;
+}
+
+.button.hovered {
+    -fx-background-color: #3a73e0;
+}
 
 
-.launch-btn { -fx-font-size: 16px; -fx-background-color: #eeeeee; -fx-text-fill: #222; -fx-background-radius: 16; }
-.launch-btn.hovered { -fx-background-color: #dddddd; }
+.launch-btn {
+    -fx-font-size: 16px;
+    -fx-background-color: #eeeeee;
+    -fx-text-fill: #222;
+    -fx-background-radius: 16;
+}
+
+.launch-btn.hovered {
+    -fx-background-color: #dddddd;
+}
 
 
-.remove-btn { -fx-background-color: #ff4d4f; -fx-text-fill: white; -fx-background-radius: 10; }
-.remove-btn:hover, .remove-btn.hovered { -fx-background-color: #d9363e; }
+.remove-btn {
+    -fx-background-color: #ff4d4f;
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+}
+
+.remove-btn:hover,
+.remove-btn.hovered {
+    -fx-background-color: #d9363e;
+}
 
 
-.card { -fx-background-color: white; -fx-padding: 12; -fx-background-radius: 16; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 12, 0.1, 0, 4); }
+.card {
+    -fx-background-color: white;
+    -fx-padding: 12;
+    -fx-background-radius: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 12, 0.1, 0, 4);
+}
 
 
-#projectGrid { -fx-padding: 20; }
+#projectGrid {
+    -fx-padding: 20;
+}

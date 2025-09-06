@@ -3,53 +3,62 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
-<StackPane xmlns="http://javafx.com/javafx/24" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HubController">
-<!-- Two layers: startRoot and projectsRoot -->
-<children>
-<!-- =============== START PAGE =============== -->
-<BorderPane fx:id="startRoot" prefWidth="1000.0" prefHeight="700.0">
-<center>
-<VBox spacing="12" alignment="CENTER">
-<children>
-<Label fx:id="titleLabel" text="Playground" styleClass="title" />
-<Label fx:id="subtitleLabel" text="Made by OOP01 Group" styleClass="subtitle" />
-</children>
-</VBox>
-</center>
-<bottom>
-<HBox spacing="12" alignment="CENTER" BorderPane.alignment="CENTER">
-<children>
-<Button fx:id="startButton" text="Start" onAction="#onStart" />
-<Button fx:id="exitButton" text="Exit" onAction="#onExit" />
-</children>
-<padding><Insets top="20" right="20" bottom="30" left="20"/></padding>
-</HBox>
-</bottom>
-<padding><Insets top="40" right="40" bottom="40" left="40"/></padding>
-</BorderPane>
+<StackPane xmlns="http://javafx.com/javafx/24"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="HubController">
+    <!-- Two layers: startRoot and projectsRoot -->
+    <children>
+        <!-- =============== START PAGE =============== -->
+        <BorderPane fx:id="startRoot" prefWidth="1000.0" prefHeight="700.0">
+            <center>
+                <VBox spacing="12" alignment="CENTER">
+                    <children>
+                        <Label fx:id="titleLabel" text="Playground" styleClass="title" />
+                        <Label fx:id="subtitleLabel" text="Made by OOP01 Group" styleClass="subtitle" />
+                    </children>
+                </VBox>
+            </center>
+            <bottom>
+                <HBox spacing="12" alignment="CENTER" BorderPane.alignment="CENTER">
+                    <children>
+                        <Button fx:id="startButton" text="Start" onAction="#onStart" />
+                        <Button fx:id="exitButton" text="Exit" onAction="#onExit" />
+                    </children>
+                    <padding>
+                        <Insets top="20" right="20" bottom="30" left="20"/>
+                    </padding>
+                </HBox>
+            </bottom>
+            <padding>
+                <Insets top="40" right="40" bottom="40" left="40"/>
+            </padding>
+        </BorderPane>
 
-<!-- =============== PROJECTS PAGE =============== -->
-<BorderPane fx:id="projectsRoot" visible="false" prefWidth="1000.0" prefHeight="700.0">
-<center>
-<GridPane fx:id="projectGrid" hgap="16" vgap="16" />
-</center>
-<bottom>
-<HBox spacing="14" alignment="CENTER" BorderPane.alignment="CENTER">
-<children>
-<Button fx:id="prevPageBtn" text="Prev" onAction="#onPrevPage" />
-<Label fx:id="pageInfoLabel" text="Page 1 / 1" />
-<Button fx:id="nextPageBtn" text="Next" onAction="#onNextPage" />
-<Region HBox.hgrow="ALWAYS" />
-<Button fx:id="addProjectBtn" text="Add Project" onAction="#onAddProject" />
-<Button fx:id="mainMenuBtn" text="Main Menu" onAction="#onMainMenu" />
-</children>
-<padding><Insets top="16" right="20" bottom="20" left="20"/></padding>
-</HBox>
-</bottom>
-<padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
-</BorderPane>
-</children>
-<stylesheets>
+        <!-- =============== PROJECTS PAGE =============== -->
+        <BorderPane fx:id="projectsRoot" visible="false" prefWidth="1000.0" prefHeight="700.0">
+            <center>
+                <GridPane fx:id="projectGrid" hgap="16" vgap="16" />
+            </center>
+            <bottom>
+                <HBox spacing="14" alignment="CENTER" BorderPane.alignment="CENTER">
+                    <children>
+                        <Button fx:id="prevPageBtn" text="Prev" onAction="#onPrevPage" />
+                        <Label fx:id="pageInfoLabel" text="Page 1 / 1" />
+                        <Button fx:id="nextPageBtn" text="Next" onAction="#onNextPage" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button fx:id="addProjectBtn" text="Add Project" onAction="#onAddProject" />
+                        <Button fx:id="mainMenuBtn" text="Main Menu" onAction="#onMainMenu" />
+                    </children>
+                    <padding>
+                        <Insets top="16" right="20" bottom="20" left="20"/>
+                    </padding>
+                </HBox>
+            </bottom>
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+        </BorderPane>
+    </children>
+    <stylesheets>
     @styles.css
-</stylesheets>
+    </stylesheets>
 </StackPane>
